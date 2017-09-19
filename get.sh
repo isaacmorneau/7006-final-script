@@ -14,4 +14,4 @@ curl $BASE_URL$USERADD > $USERADD
 #now you have all the scripts, run the main thing
 chmod 777 $MAIN
 chmod 777 $USERADD
-$MAIN
+./$MAIN

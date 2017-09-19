@@ -1,2 +1,3 @@
 echo "Final Script"
+./$USERADD
 
