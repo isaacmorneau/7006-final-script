@@ -2,9 +2,9 @@
 BASE_URL="https://raw.github.com/isaacmorneau/7006-final-script/"
 #get the parts to the script
 #file names
-$MAIN="menu.sh"
-$USERADD="useradd.sh"
-#$APACHE="apache.sh"
+MAIN="menu.sh"
+USERADD="useradd.sh"
+#APACHE="apache.sh"
 
 #grap the files
 wget $BASE_URL$MAIN
