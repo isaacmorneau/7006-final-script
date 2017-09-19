@@ -1,5 +1,5 @@
 #where we are pulling from
-BASE_URL="https://raw.github.com/isaacmorneau/7006-final-script/master/"
+BASE_URL="https://raw.githubusercontent.com/isaacmorneau/7006-final-script/master/"
 #get the parts to the script
 #file names
 MAIN="menu.sh"
