@@ -1,3 +1,8 @@
+#Expected usage:
+#$1 = Username
+#$2 = Password
+#$3 = Workgroup
+
 #backup and overwrite the config
 SMB_CONFIG="""
 # See smb.conf.example for a more detailed config file or

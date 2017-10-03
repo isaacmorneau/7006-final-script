@@ -1,3 +1,6 @@
+#Expected usage:
+#$1 = Username
+
 while true; do
     read -p "add no root squash fs? [y/n]:" yn
     case $yn in

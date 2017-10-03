@@ -1,3 +1,6 @@
+#Expected usage:
+#$1 = Username
+
 echo "removing:"$1
 userdel $1
 echo "cleaning up home dir"
