@@ -6,7 +6,7 @@ SMB_CONFIG="""
 # you modified it.
 
 [global]
-	workgroup = CST323
+	workgroup = $3
 	server string = Samba Server
 	security = user
 
