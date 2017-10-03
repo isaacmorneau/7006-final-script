@@ -6,6 +6,7 @@ USERADD="useradd.sh"
 APACHE="apache.sh"
 SAMBA="samba.sh"
 NFS="nfs.sh"
+MENU="menu.sh"
 
 #grap the files
 curl $BASE_URL$USERADD > $USERADD
@@ -16,3 +17,4 @@ curl $BASE_URL$NFS > $NFS
 #now you have all the scripts make them runable
 chmod 777 $USERADD $APACHE $SAMBA $NFS
 
+./$MENU
