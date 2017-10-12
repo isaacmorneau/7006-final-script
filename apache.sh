@@ -1,9 +1,6 @@
 echo "Installing httpd"
 dnf install httpd
 
-#Need to do /etc/httpd/conf.d/userdir.conf modification here
-#Userdir enabled and stuff like that
-
 echo "Getting username"
 read myUser
 
@@ -25,30 +22,48 @@ chmod 777 /home/$myUser
 chmod 777 /home/$myUser/public_html
 chmod 777 /home/$myUser/public_html/index.html
 
-#TODO add full userdir.conf string to overwrite with
+userdirconf = """
+# Settings for user home directories
+#
+# Required module: mod_authz_core, mod_authz_host, mod_userdir
 
+#
+# UserDir: The name of the directory that is appended onto a user's home
+# directory if a ~user request is received.  Note that you must also set
+# the default access control for these directories, as in the example below.
+#
+UserDir public_html
+
+#
+# Control access to UserDir directories.  The following is an example
+# for a site where these directories are restricted to read-only.
+#
+#<Directory "/home/*/public_html">
+    #AllowOverride FileInfo AuthConfig Limit Indexes
+    #Options MultiViews Indexes SymLinksIfOwnerMatch IncludesNoExec
+    #Require method GET POST OPTIONS
+#</Directory>
+
+<Directory /home/$myUser>
+    AllowOverride None
+    AuthUserFile /var/www/html/passwords/httpd-passwords #httpd-passwords is a temp name for password file
+    AuthGroupFile /dev/null
+    AuthName test
+    AuthType Basic
+    <Limit GET>
+        require valid-user
+        order deny,allow
+        deny from all
+        allow from all
+    </Limit>
+</Directory>
+"""
+
+echo "Backing up userdir.conf to home directory"
 cp /etc/httpd/conf.d/userdir.conf ~/userdir.conf.bak
 
-#passwdConf = """
-#<Directory /home/$myUser>
-    #AllowOverride None
-    #AuthUserFile /var/www/html/passwords/foobar
-    #AuthGroupFile /dev/null
-    #AuthName test
-    #AuthType Basic
-    #<Limit GET>
-        #require valid-user
-        #order deny,allow
-        #deny from all
-        #allow from all
-    #</Limit>
-#</Directory>
-#"""
-
-#echo "Appending password block to userdir.conf"
-#echo $passwdConf >> /etc/httpd/conf.d/userdir.conf
-
-#Need to comment out default rules that don't require password in userdir.conf
+echo "Writing config to /etc/httpd/conf.d/userdir.conf"
+cat $userdirconf > /etc/httpd/conf.d/userdir.conf
 
 echo "Creating html passwords file"
 mkdir /var/www/html/passwords
