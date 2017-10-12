@@ -4,6 +4,11 @@ install_apache() {
     ./apache.sh
     local result=$?
 #TODO Make use of result
+if [[ -n result ]]; then
+    echo "Apache.sh exited successfully"
+else
+    echo "Apache.sh exited with error $result"
+fi
 }
 
 install_nfs() {
@@ -11,9 +16,20 @@ install_nfs() {
     read nfsUser
     ./useradd.sh $nfsUser
     local result=$?
+
+if [[ -n result ]]; then
+    echo "useradd.sh exited successfully"
+else
+    echo "useradd.sh exited with error $result"
+fi
     ./nfs.sh $nfsUser
     result=$?
 #TODO Make use of result
+if [[ -n result ]]; then
+    echo "nfs.sh exited successfully"
+else
+    echo "nfs.sh exited with error $result"
+fi
 }
 
 install_samba() {
@@ -29,6 +45,11 @@ install_samba() {
 
     local result=$?
 #TODO Make use of result
+if [[ -n result ]]; then
+    echo "samba.sh exited successfully"
+else
+    echo "samba.sh exited with error $result"
+fi
 }
 
 if [ -n "$1" ]; then
