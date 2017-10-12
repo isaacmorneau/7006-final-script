@@ -46,7 +46,8 @@ UserDir public_html
 
 <Directory /home/$1>
     AllowOverride None
-    AuthUserFile /var/www/html/passwords/httpd-passwords #httpd-passwords is a temp name for password file
+    #httpd-passwords is a temp name for password file
+    AuthUserFile /var/www/html/passwords/httpd-passwords
     AuthGroupFile /dev/null
     AuthName test
     AuthType Basic
