@@ -1,5 +1,7 @@
 echo "Final Script"
 
+ISF=$'\n'
+
 install_apache() {
     echo "Enter the apache username"
     read apacheUser
@@ -10,7 +12,7 @@ install_apache() {
     echo "Enter the apache web message"
     read apacheMesg
 
-    ./apache.sh $apacheUser $apachePass $apacheMesg
+    ./apache.sh $apacheUser $apachePass "$apacheMesg"
     local result=$?
 if [[ result -eq 0 ]]; then
     echo "Apache.sh exited successfully"
