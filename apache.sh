@@ -7,6 +7,14 @@ read myUser
 
 ./useradd.sh $myUser
 
+echo "Enter the user's password"
+read pass
+
+passenter="""
+$pass
+$pass
+"""
+
 echo "Creating public_html"
 mkdir /home/$myUser/public_html
 
@@ -69,7 +77,7 @@ mkdir /var/www/html/passwords
 echo "Chmod 777'ing passwords file"
 chmod 777 /var/www/html/passwords
 echo "Getting website password"
-htpasswd -c /var/www/html/passwords/httpd-passwords $myUser
+echo $passenter | htpasswd -c /var/www/html/passwords/httpd-passwords $myUser
 
 echo "Restarting httpd"
 systemctl restart httpd
