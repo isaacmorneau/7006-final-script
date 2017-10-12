@@ -70,14 +70,14 @@ echo "Backing up userdir.conf to home directory"
 cp /etc/httpd/conf.d/userdir.conf ~/userdir.conf.bak
 
 echo "Writing config to /etc/httpd/conf.d/userdir.conf"
-echo $userdirconf > /etc/httpd/conf.d/userdir.conf
+echo "$userdirconf" > /etc/httpd/conf.d/userdir.conf
 
 echo "Creating html passwords file"
 mkdir /var/www/html/passwords
 echo "Chmod 777'ing passwords file"
 chmod 777 /var/www/html/passwords
 echo "Getting website password"
-echo $passenter | htpasswd -c /var/www/html/passwords/httpd-passwords $1
+echo "$passenter" | htpasswd -c /var/www/html/passwords/httpd-passwords $1
 
 echo "Restarting httpd"
 systemctl restart httpd
