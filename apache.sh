@@ -32,7 +32,13 @@ userdirconf = """
 # directory if a ~user request is received.  Note that you must also set
 # the default access control for these directories, as in the example below.
 #
-UserDir public_html
+<IfModule mod_userdir.c>
+
+    UserDir enabled
+
+    UserDir public_html
+
+</IfModule>
 
 #
 # Control access to UserDir directories.  The following is an example
