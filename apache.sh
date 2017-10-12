@@ -1,5 +1,5 @@
 echo "Installing httpd"
-dnf install httpd
+dnf -y install httpd
 
 ./useradd.sh $1
 
