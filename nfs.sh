@@ -1,6 +1,8 @@
 #Expected usage:
 #$1 = Username
 
+./useradd.sh $1
+
 while true; do
     read -p "add no root squash fs? [y/n]:" yn
     case $yn in

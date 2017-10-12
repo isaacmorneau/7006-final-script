@@ -1,7 +1,16 @@
 echo "Final Script"
 
 install_apache() {
-    ./apache.sh
+    echo "Enter the apache username"
+    read apacheUser
+
+    echo "Enter the apache password"
+    read apachePass
+
+    echo "Enter the apache web message"
+    read apacheMesg
+
+    ./apache.sh $apacheUser $apachePass $apacheMesg
     local result=$?
 if [[ result -eq 0 ]]; then
     echo "Apache.sh exited successfully"
@@ -13,14 +22,7 @@ fi
 install_nfs() {
     echo "Enter the name of the user to setup nfs for: "
     read nfsUser
-    ./useradd.sh $nfsUser
-    local result=$?
 
-if [[ result -eq 0 ]]; then
-    echo "useradd.sh exited successfully"
-else
-    echo "useradd.sh exited with error $result"
-fi
     ./nfs.sh $nfsUser
     result=$?
 if [[ result -eq 0 ]]; then

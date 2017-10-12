@@ -1,33 +1,26 @@
 echo "Installing httpd"
 dnf install httpd
 
-echo "Getting username"
-echo "Enter the name of the apache user"
-read myUser
-
-./useradd.sh $myUser
+./useradd.sh $1
 
 echo "Enter the user's password"
 read pass
 
 passenter="""
-$pass
-$pass
+$2
+$2
 """
 
 echo "Creating public_html"
-mkdir /home/$myUser/public_html
-
-echo "Enter the default message to be shown on the web page"
-read myMessage
+mkdir /home/$1/public_html
 
 echo "Adding basic html file"
-echo "<p>$myMessage</p>" > /home/$myUser/public_html/index.html
+echo "<p>$3</p>" > /home/$1/public_html/index.html
 
 echo "Chmod 777'ing all the myUser folders/files"
-chmod 777 /home/$myUser
-chmod 777 /home/$myUser/public_html
-chmod 777 /home/$myUser/public_html/index.html
+chmod 777 /home/$1
+chmod 777 /home/$1/public_html
+chmod 777 /home/$1/public_html/index.html
 
 userdirconf = """
 # Settings for user home directories
@@ -51,7 +44,7 @@ UserDir public_html
     #Require method GET POST OPTIONS
 #</Directory>
 
-<Directory /home/$myUser>
+<Directory /home/$1>
     AllowOverride None
     AuthUserFile /var/www/html/passwords/httpd-passwords #httpd-passwords is a temp name for password file
     AuthGroupFile /dev/null
