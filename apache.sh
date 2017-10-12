@@ -2,16 +2,15 @@ echo "Installing httpd"
 dnf install httpd
 
 echo "Getting username"
+echo "Enter the name of the apache user"
 read myUser
 
 ./useradd.sh $myUser
 
-echo "Logging in as new user"
-su $myUser
 echo "Creating public_html"
 mkdir /home/$myUser/public_html
-exit
 
+echo "Enter the default message to be shown on the web page"
 read myMessage
 
 echo "Adding basic html file"
