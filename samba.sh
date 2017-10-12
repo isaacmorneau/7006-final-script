@@ -50,6 +50,9 @@ SMB_CONFIG="""
 	create mask = 0664
 	directory mask = 0775
 """
+
+dnf install -y samba
+
 cp /etc/samba/smb.conf ~/smb.conf.bak
 echo $SMB_CONFIG > /etc/samba/smb.conf
 #add the user to samba
