@@ -18,6 +18,7 @@ NFS_CONFIG="""
 cp /etc/exports ~/exports.bak
 echo $NFS_CONFIG > /etc/exports
 #restart the services
+echo "Exporting the file system"
 exportfs -v
 systemctl restart nfs
 
