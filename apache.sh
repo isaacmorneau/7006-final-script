@@ -69,7 +69,7 @@ mkdir /var/www/html/passwords
 echo "Chmod 777'ing passwords file"
 chmod 777 /var/www/html/passwords
 echo "Getting website password"
-htpasswd -c /var/www/html/passwords $myUser
+htpasswd -c /var/www/html/passwords/httpd-passwords $myUser
 
 echo "Restarting httpd"
 systemctl restart httpd
