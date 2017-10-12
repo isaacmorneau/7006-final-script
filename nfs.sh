@@ -6,7 +6,7 @@
 while true; do
     read -p "add no root squash fs? [y/n]:" yn
     case $yn in
-        [Yy]* ) SQUASH=", no_root_squash"; break ;;
+        [Yy]* ) SQUASH=",no_root_squash"; break ;;
         [Nn]* ) break;;
     esac
 done
