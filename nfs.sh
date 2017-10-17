@@ -13,7 +13,7 @@ done
 
 #backup and overwrite the config
 NFS_CONFIG="""
-/home/$1 192.168.0.0/255.255.255.0 (rw$SQUASH)
+/home/$1 192.168.0.0/255.255.255.0(rw$SQUASH)
 """
 cp /etc/exports ~/exports.bak
 echo $NFS_CONFIG > /etc/exports
