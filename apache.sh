@@ -3,9 +3,6 @@ dnf -y install httpd
 
 ./useradd.sh $1
 
-echo "Enter the user's password"
-read pass
-
 passenter="""
 $2
 $2
@@ -17,7 +14,7 @@ mkdir /home/$1/public_html
 echo "Adding basic html file"
 echo "<p>$3</p>" > /home/$1/public_html/index.html
 
-echo "Chmod 777'ing all the myUser folders/files"
+echo "Chmod 777'ing all the user folders/files"
 chmod 777 /home/$1
 chmod 777 /home/$1/public_html
 chmod 777 /home/$1/public_html/index.html
