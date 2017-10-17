@@ -56,8 +56,7 @@ dnf install -y samba
 cp /etc/samba/smb.conf ~/smb.conf.bak
 echo "$SMB_CONFIG" > /etc/samba/smb.conf
 #add the user to samba
-SMB_USER="""
-$2
+SMB_USER="""$2
 $2
 """
 echo "$SMB_USER" | smbpasswd -a $1
