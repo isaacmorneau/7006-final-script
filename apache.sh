@@ -3,9 +3,6 @@ dnf -y install httpd
 
 ./useradd.sh $1
 
-echo "Enter the user's password"
-read pass
-
 passenter="""
 $2
 $2
