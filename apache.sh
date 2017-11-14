@@ -20,15 +20,6 @@ chmod 777 /home/$1/public_html
 chmod 777 /home/$1/public_html/index.html
 
 userdirconf="""
-# Settings for user home directories
-#
-# Required module: mod_authz_core, mod_authz_host, mod_userdir
-
-#
-# UserDir: The name of the directory that is appended onto a user's home
-# directory if a ~user request is received.  Note that you must also set
-# the default access control for these directories, as in the example below.
-#
 <IfModule mod_userdir.c>
 
     UserDir enabled
@@ -36,16 +27,6 @@ userdirconf="""
     UserDir public_html
 
 </IfModule>
-
-#
-# Control access to UserDir directories.  The following is an example
-# for a site where these directories are restricted to read-only.
-#
-#<Directory "/home/*/public_html">
-    #AllowOverride FileInfo AuthConfig Limit Indexes
-    #Options MultiViews Indexes SymLinksIfOwnerMatch IncludesNoExec
-    #Require method GET POST OPTIONS
-#</Directory>
 
 <Directory /home/$1>
     AllowOverride None

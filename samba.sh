@@ -5,11 +5,6 @@
 
 #backup and overwrite the config
 SMB_CONFIG="""
-# See smb.conf.example for a more detailed config file or
-# read the smb.conf manpage.
-# Run 'testparm' to verify the config is correct after
-# you modified it.
-
 [global]
 	workgroup = $3
 	server string = Samba Server
