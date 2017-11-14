@@ -53,6 +53,19 @@ else
 fi
 }
 
+install_xinetd() {
+    echo "Enter the ip that is allowed to connect through telnet: "
+    read telnetIP
+
+    ./xinetd.sh $telnetIP
+    local result=$?
+if [[ result -eq 0 ]]; then
+    echo "xinetd.sh exited successfully"
+else
+    echo "xinetd.sh exited with error $result"
+fi
+}
+
 if [ -n "$1" ]; then
     echo "Skip Prompt Enabled"
     install_apache
@@ -79,6 +92,14 @@ else
         read -p "Install samba? [y/n]: " yn
         case $yn in
             [Yy]* ) install_samba; break ;;
+            [Nn]* ) break;;
+        esac
+    done
+
+    while true; do
+        read -p "Install xinetd? [y/n]: " yn
+        case $yn in
+            [Yy]* ) install_xinetd; break ;;
             [Nn]* ) break;;
         esac
     done
